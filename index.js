@@ -7,7 +7,7 @@ const port = process.env.PORT;
 app.set("views", "./views");
 app.set("view engine", "pug");
 
-route(app); 
+app.use("/",route)
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
