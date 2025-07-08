@@ -5,7 +5,8 @@ require("dotenv").config();
 const database = require("./config/database")
 const route = require("./routes/client/client.route");
 const routeAdmin = require("./routes/admin/admin.route");
-const systemConfig = require("./config/system")
+const systemConfig = require("./config/system");
+const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT;
 
@@ -14,7 +15,8 @@ database.connect();
 app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(express.static("public"));
-app.use(methodOverride('_method'));  
+app.use(methodOverride('_method')); 
+app.use(bodyParser.urlencoded({extended: false})); 
 
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
