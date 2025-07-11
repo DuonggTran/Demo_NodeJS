@@ -72,6 +72,12 @@ module.exports.changeMulti = async(req, res) =>
                 status: "inactive"
             });
             break;
+        case "delete-all":
+            await Product.updateMany({_id: {$in: ids}}, {
+                deleted: true,
+                deletedAt: new Date()
+            });
+            break;
         default:
             break;
     }
@@ -88,6 +94,7 @@ module.exports.deleteItem = async(req, res) =>
     await Product.updateOne({_id : id}, {
             deleted: true,
             deletedAt: new Date()
+
         });
 
     res.redirect(req.get("referer") || "/admin/products");
