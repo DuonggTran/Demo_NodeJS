@@ -14,7 +14,9 @@ block main
                         .inner-image
                             img(
                                 src=item.thumbnail,
-                                alt=item.title
+                                alt=item.title,
+                                width="100px",
+                                height="auto"
                             )
                         .inner-content
                             h3.inner-title #{item.title}
