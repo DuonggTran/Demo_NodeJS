@@ -3,7 +3,10 @@ include ../../mixins/filterStatus.pug
 include ../../mixins/search.pug
 include ../../mixins/pagination.pug
 include ../../mixins/form-change-multi.pug
+include ../../mixins/alert-success.pug
 block main 
+    +alert-success("5000")
+         
     h3 Danh Sách Sản Phẩm
     .card.mb-3
         .card-header Bộ lọc và Tìm kiếm

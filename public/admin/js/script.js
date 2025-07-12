@@ -90,7 +90,7 @@ if (formChangeMulti){
         const typeChange = e.target.elements.type.value;
         if(typeChange =="delete-all")
         {
-            const isConfirm = confrim("Bạn có chắc muốn xóa những sản phẩm này ?")
+            const isConfirm = confirm("Bạn có chắc muốn xóa những sản phẩm này ?")
             if(!isConfirm)
             {
                 return;
@@ -102,13 +102,13 @@ if (formChangeMulti){
             const inputIds = formChangeMulti.querySelector("input[name='ids']");
 
             inputChecked.forEach(input => {
-                if(typeChange="change-position")
+                if(typeChange=="change-position")
                 {
                     const position = input.closest("tr").querySelector("input[name='position']").value;
                     ids.push(`${input.value}-${position}`);
                 }else
                 {
-                    ids.push(id);
+                     ids.push(input.value);
                 }
             });
 
@@ -118,6 +118,20 @@ if (formChangeMulti){
         } else {
             alert("Vui lòng chọn ít nhẩt 1 sản phẩm");
         }
+    });
+}
+// end
+
+// show Alert
+const showAlert = document.querySelector("[show-alert]");
+if (showAlert){
+    const time = parseInt(showAlert.getAttribute("data-time"));
+    const closeAlert = document.querySelector("[close-alert]");
+    setTimeout(() =>{
+        showAlert.classList.add("alert-hidden");
+    },time);
+    closeAlert.addEventListener("click",() => {
+        showAlert.classList.add("alert-hidden");
     });
 }
 // end
