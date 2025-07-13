@@ -12,14 +12,22 @@ block main
         .card-header Bộ lọc và Tìm kiếm
             .card-body
                 .row
-                    .col-6
+                    .col-md-6.mb-2
                         +filter-Status(filterStatus)
-                    .col-6 
+                    .col-md-6.mb-2
                         +search(keyword)
     .card.mb-3
         .card-header Danh Sách Sản Phẩm
             .card-body
-                +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+                .row 
+                    .col-8
+                            +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+                    .col-4.text-right
+                            a(
+                                href= `${prefixAdmin}/products/create`
+                                class="btn btn-outline-success"
+                                style=" font-size: 16px;"
+                            ) + Thêm mới
 
                 table(
                     class = "table table-hover table-sm"
